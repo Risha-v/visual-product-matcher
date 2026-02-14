@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Visual Product Matcher
 
 ## Setup
@@ -20,3 +21,6 @@ npm run dev
 - Deploy frontend to Vercel
 - Deploy backend to Render
 - Set environment variables
+=======
+# visual-product-matcher
+>>>>>>> 17d45548ddb54b2ef6439647cc5a21bfe036d056
