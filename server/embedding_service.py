@@ -20,6 +20,7 @@ CORS(app)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IMAGE_FOLDER = os.path.join(BASE_DIR, "assets", "product")
 PRODUCTS_PATH = os.path.join(BASE_DIR, "products.json")
+BASE_URL = os.environ.get("BASE_URL", "http://localhost:5000")
 
 model = SentenceTransformer("sentence-transformers/clip-ViT-B-32")
 
@@ -112,7 +113,7 @@ def match():
 
             results.append({
                 **product,
-                "image": f"http://localhost:5000/images/{product['image']}",
+                "image": f"{BASE_URL}/images/{product['image']}",
                 "similarity": score
             })
 
