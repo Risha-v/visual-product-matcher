@@ -7,13 +7,11 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/match", async (req, res) => {
-  const { query } = req.body;
-
   try {
-    const response = await fetch("http://localhost:8000/search", {
+    const response = await fetch(process.env.EMBEDDING_API!, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query })
+      body: JSON.stringify(req.body),
     });
 
     const data = await response.json();
@@ -24,6 +22,9 @@ app.post("/match", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
+app.get("/health", (_, res) => res.send("OK"));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
